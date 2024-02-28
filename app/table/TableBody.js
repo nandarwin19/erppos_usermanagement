@@ -31,7 +31,7 @@ const TableBody = ({ data }) => {
             {tableHeader.map((th, index) => (
               <th
                 key={index}
-                className="px-3 py-4 text-left min-w-[125px] group cursor-pointer"
+                className="px-3 py-4 text-left w-[130px] group cursor-pointer"
                 onClick={() => sortHandler()}
               >
                 <div className="flex items-center text-xs">{th}</div>
@@ -50,25 +50,28 @@ const TableBody = ({ data }) => {
                 <Checkbox defaultSelected></Checkbox>
               </td>
 
-              <td className="text-left p-3 min-w-[200px] text-white">
-                <div className="w-[76px] text-center">{`${row.firstName} ${row.lastName}`}</div>
+              <td className="text-left p-3 min-w-[150px] text-white">
+                <div className="w-[125px] text-center">{`${row.firstName} ${row.lastName}`}</div>
               </td>
 
-              {/* Render other table data */}
               {Object.values(row)
                 .slice(2)
                 .map((value, idx) => (
                   <td
                     key={idx}
-                    className="text-left p-3 min-w-[200px] text-white"
+                    className="text-left p-3 min-w-[60px] text-white"
                   >
-                    <div className="w-[76px] text-center">{value}</div>
+                    <div className="w-[60px] text-center">{value}</div>
                   </td>
                 ))}
 
               {/* Render status */}
               <td className="text-left p-3 min-w-[200px] text-white">
-                <div className="w-[76px] text-center">
+                <div
+                  className={`${
+                    row.isActive ? "bg-green-600" : "bg-red-600"
+                  } w-[80px] text-center  p-2 px-3`}
+                >
                   {row.isActive ? "Active" : "Inactive"}
                 </div>
               </td>

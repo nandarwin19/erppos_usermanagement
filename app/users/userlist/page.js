@@ -1,11 +1,17 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import UserListProvider, { UserListContext } from "../UserListProvider";
 import { TableFilter } from "@/app/table/TableFilter";
 import TableBody from "@/app/table/TableBody";
 
 const UserList = ({ hovered }) => {
   const { userData } = useContext(UserListContext);
+
+  useEffect(() => {
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
   return (
     <div
       className={`${
@@ -20,11 +26,7 @@ const UserList = ({ hovered }) => {
       </p>
       <div className="border py-8 px-2 rounded-md w-full min-h-[80vh] border-main/70">
         <TableFilter />
-        {/* {userData.map((user, index) => (
-          <div key={index}>
-            <p>{user.firstName}</p>
-          </div>
-        ))} */}
+
         <TableBody data={userData} />
       </div>
     </div>

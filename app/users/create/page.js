@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Input from "@/app/components/Input";
 import {
   Button,
+  Checkbox,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -14,22 +15,28 @@ import {
 } from "@nextui-org/react";
 import { RolesListInfos } from "@/app/utils/data";
 import { z } from "zod";
+import UserListProvider, { UserListContext } from "../UserListProvider";
+import Breadcrumbs from "@/app/components/BreadCrumb";
+import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Page = () => {
-  const [userData, setUserData] = useState({
+const CreateUser = () => {
+  const { userData, updateUser } = useContext(UserListContext);
+  const router = useRouter();
+  const [newUserData, setNewUserData] = useState({
     firstName: "",
     lastName: "",
-    emailAddress: "",
-    username: "",
-    role: "",
+    email: "",
     isActive: false,
+    role: "",
+    username: "",
   });
 
   const userSchema = z.object({
     firstName: z.string().min(2),
     lastName: z.string().min(2),
     username: z.string().min(4),
-    emailAddress: z.string().email(),
+    email: z.string().email(),
     isActive: z.boolean(),
     role: z.string(),
   });
@@ -39,12 +46,12 @@ const Page = () => {
     const newValue = type === "checkbox" ? checked : value;
 
     if (name === "role") {
-      setUserData((prevUserData) => ({
+      setNewUserData((prevUserData) => ({
         ...prevUserData,
         [name]: value,
       }));
     } else {
-      setUserData((prevUserData) => ({
+      setNewUserData((prevUserData) => ({
         ...prevUserData,
         [name]: newValue,
       }));
@@ -55,9 +62,8 @@ const Page = () => {
     e.preventDefault();
 
     try {
-      userSchema.parse(userData);
-      localStorage.setItem("userData", JSON.stringify(userData));
-      console.log("Form submitted with data:", userData);
+      userSchema.parse(newUserData);
+      updateUser([...userData, newUserData]);
       toast.success("Create successfully!");
     } catch (error) {
       toast.error("Form submission failed");
@@ -65,40 +71,34 @@ const Page = () => {
     }
   };
 
-  const goBack = () => {};
+  const goBack = () => {
+    router.push("/users/userlist");
+  };
 
   return (
     <div>
       <Toaster position="top-center" />
       <div className="w-full h-full">
         <div className="my-2">
-          <p
+          <div
             onClick={goBack}
             leftIcon={faArrowLeft}
-            className="bg-transparent text-gray-400 "
+            className="bg-transparent cursor-pointer text-sm text-gray-400 "
           >
+            <FontAwesomeIcon icon={faArrowLeft} className="mx-1" />
             Back
-          </p>
+          </div>
         </div>
         <div className="bg-secondary rounded-xl px-8">
           <div className="pt-6">
             <h1 className="font-semibold text-xl text-gray-300">
               Create User Account
             </h1>
-            <div>users / create</div>
+
+            {/* <Breadcrumbs /> */}
           </div>
           <form onSubmit={handleSubmit} className="py-4">
             <div className="grid grid-cols-5 gap-10">
-              <div>
-                <Input
-                  labelText="Prefix:"
-                  type="text"
-                  name="prefix"
-                  value={userData.prefix}
-                  onChange={handleUserDataChange}
-                  placeholder="Mr / Mrs / Miss"
-                />
-              </div>
               <div className="col-span-2">
                 <Input
                   labelText="First Name"
@@ -106,7 +106,7 @@ const Page = () => {
                   required
                   type="text"
                   name="firstName"
-                  value={userData.firstName}
+                  value={newUserData.firstName}
                   onChange={handleUserDataChange}
                 />
               </div>
@@ -115,7 +115,7 @@ const Page = () => {
                   labelText="Last Name"
                   type="text"
                   name="lastName"
-                  value={userData.lastName}
+                  value={newUserData.lastName}
                   onChange={handleUserDataChange}
                   placeholder="Last Name"
                 />
@@ -126,8 +126,8 @@ const Page = () => {
                 <div className="col-span-3">
                   <Input
                     type="email"
-                    name="emailAddress"
-                    value={userData.emailAddress}
+                    name="email"
+                    value={newUserData.email}
                     onChange={handleUserDataChange}
                     labelText="Email Address"
                     placeholder="username@domain.xyz"
@@ -177,10 +177,10 @@ const Page = () => {
               </div>
             </div>
             <div className="flex items-center gap-5 mt-5 mb-7">
-              <Input
+              <Checkbox
                 type="checkbox"
                 name="isActive"
-                checked={userData.isActive}
+                checked={newUserData.isActive}
                 onChange={handleUserDataChange}
               />
               <div className="flex flex-col">
@@ -198,4 +198,12 @@ const Page = () => {
   );
 };
 
-export default Page;
+const UsersListWithContext = () => {
+  return (
+    <UserListProvider>
+      <CreateUser />
+    </UserListProvider>
+  );
+};
+
+export default UsersListWithContext;
