@@ -1,11 +1,24 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserListProvider, { UserListContext } from "../UserListProvider";
 import { TableFilter } from "@/app/table/TableFilter";
 import TableBody from "@/app/table/TableBody";
 
 const UserList = ({ hovered }) => {
   const { userData } = useContext(UserListContext);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredUserData = userData.filter((user) =>
+    user?.name?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  useEffect(() => {
+    console.log(filteredUserData);
+  }, [filteredUserData]);
 
   useEffect(() => {
     if (userData) {
@@ -25,9 +38,12 @@ const UserList = ({ hovered }) => {
         User / UserList
       </p>
       <div className="border py-8 px-2 rounded-md w-full min-h-[80vh] border-main/70">
-        <TableFilter />
+        <TableFilter
+          searchQuery={searchQuery}
+          handleSearchChange={handleSearchChange}
+        />
 
-        <TableBody data={userData} />
+        <TableBody data={userData} filterData={filteredUserData} />
       </div>
     </div>
   );

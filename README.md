@@ -9,12 +9,12 @@
   - /roles
 
 <!-- - components
-  - sidebar
+  - sidebar done**
   - breadcrumb
-  - pending button
+  - pending button done** 
   - dark and light dropdown
   - search bar
-  - add new user
+  - add new user done**
   - delete user
   - edit user
   - add role

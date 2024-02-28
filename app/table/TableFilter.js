@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 
-export const TableFilter = ({ searchQuery }) => {
+export const TableFilter = ({ searchQuery, handleSearchChange }) => {
   const router = useRouter();
 
   const goToCreate = () => {
@@ -24,8 +24,8 @@ export const TableFilter = ({ searchQuery }) => {
           <div className="w-80 relative group">
             <input
               className="w-80 rounded-md bg-main h-10 px-4  hover:text-white placeholder:text-gray-300 outline-none group-hover:scale-105 duration-300 ease-in-out"
-              // value={searchQuery}
-              // onChange={handleSearchChange}
+              value={searchQuery}
+              onChange={handleSearchChange}
               placeholder="Search user"
             />
             <FontAwesomeIcon

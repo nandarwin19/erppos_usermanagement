@@ -10,7 +10,7 @@ import {
 
 const tableHeader = ["FullName", "Email", "", "Role", "Username", "Status"];
 
-const TableBody = ({ data }) => {
+const TableBody = ({ data, filterData }) => {
   const [checked, setChecked] = useState(false);
 
   const handleCheck = (e) => {
@@ -41,59 +41,60 @@ const TableBody = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, idx) => (
-            <tr
-              key={idx}
-              className="capitalize border-b border-dashed border-gray-500"
-            >
-              <td className="px-3 py-3 min-w-[10px]">
-                <Checkbox defaultSelected></Checkbox>
-              </td>
+          {filterData == null &&
+            data.map((row, idx) => (
+              <tr
+                key={idx}
+                className="capitalize border-b border-dashed border-gray-500"
+              >
+                <td className="px-3 py-3 min-w-[10px]">
+                  <Checkbox defaultSelected></Checkbox>
+                </td>
 
-              <td className="text-left p-3 min-w-[150px] text-white">
-                <div className="w-[125px] text-center">{`${row.firstName} ${row.lastName}`}</div>
-              </td>
+                <td className="text-left p-3 min-w-[150px] text-white">
+                  <div className="w-[125px] text-center">{`${row.firstName} ${row.lastName}`}</div>
+                </td>
 
-              {Object.values(row)
-                .slice(2)
-                .map((value, idx) => (
-                  <td
-                    key={idx}
-                    className="text-left p-3 min-w-[60px] text-white"
+                {Object.values(row)
+                  .slice(2)
+                  .map((value, idx) => (
+                    <td
+                      key={idx}
+                      className="text-left p-3 min-w-[60px] text-white"
+                    >
+                      <div className="w-[60px] text-center">{value}</div>
+                    </td>
+                  ))}
+
+                {/* Render status */}
+                <td className="text-left p-3 min-w-[200px] text-white">
+                  <div
+                    className={`${
+                      row.isActive ? "bg-green-600" : "bg-red-600"
+                    } w-[80px] text-center  p-2 px-3`}
                   >
-                    <div className="w-[60px] text-center">{value}</div>
-                  </td>
-                ))}
-
-              {/* Render status */}
-              <td className="text-left p-3 min-w-[200px] text-white">
-                <div
-                  className={`${
-                    row.isActive ? "bg-green-600" : "bg-red-600"
-                  } w-[80px] text-center  p-2 px-3`}
-                >
-                  {row.isActive ? "Active" : "Inactive"}
-                </div>
-              </td>
-              <td className="p-3 pl-0">
-                <Dropdown>
-                  <DropdownTrigger>
-                    <Button variant="bordered" className="text-white">
-                      Actions
-                    </Button>
-                  </DropdownTrigger>
-                  <DropdownMenu aria-label="Static Actions">
-                    <DropdownItem key="edit" className="text-main">
-                      Edit
-                    </DropdownItem>
-                    <DropdownItem key="delete" className="text-main">
-                      Delete
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </td>
-            </tr>
-          ))}
+                    {row.isActive ? "Active" : "Inactive"}
+                  </div>
+                </td>
+                <td className="p-3 pl-0">
+                  <Dropdown>
+                    <DropdownTrigger>
+                      <Button variant="bordered" className="text-white">
+                        Actions
+                      </Button>
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="Static Actions">
+                      <DropdownItem key="edit" className="text-main">
+                        Edit
+                      </DropdownItem>
+                      <DropdownItem key="delete" className="text-main">
+                        Delete
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

@@ -19,9 +19,11 @@ import UserListProvider, { UserListContext } from "../UserListProvider";
 import Breadcrumbs from "@/app/components/BreadCrumb";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Spinner } from "@nextui-org/react";
 
 const CreateUser = () => {
   const { userData, updateUser } = useContext(UserListContext);
+  const [isPending, setIsPending] = useState(false);
   const router = useRouter();
   const [newUserData, setNewUserData] = useState({
     firstName: "",
@@ -64,8 +66,18 @@ const CreateUser = () => {
     try {
       userSchema.parse(newUserData);
       updateUser([...userData, newUserData]);
+      setIsPending(false);
       toast.success("Create successfully!");
+      setNewUserData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        isActive: false,
+        role: "",
+        username: "",
+      });
     } catch (error) {
+      setIsPending(false);
       toast.error("Form submission failed");
       console.error("Form submission error:", error.errors);
     }
@@ -97,7 +109,7 @@ const CreateUser = () => {
 
             {/* <Breadcrumbs /> */}
           </div>
-          <form onSubmit={handleSubmit} className="py-4">
+          <form onSubmit={handleSubmit} className="py-8">
             <div className="grid grid-cols-5 gap-10">
               <div className="col-span-2">
                 <Input
@@ -137,7 +149,7 @@ const CreateUser = () => {
                   <Input
                     type="text"
                     name="username"
-                    value={userData.username}
+                    value={newUserData.username}
                     onChange={handleUserDataChange}
                     labelText="Username"
                     placeholder="john_lay"
@@ -189,8 +201,15 @@ const CreateUser = () => {
                   User account is activate or deactivate
                 </p>
               </div>
-              <button type="submit">Save</button>
             </div>
+            <Button
+              className="bg-main w-20 text-gray-200"
+              onClick={() => setIsPending(true)}
+              type="submit"
+            >
+              Create
+              {isPending && <Spinner size="sm" />}
+            </Button>
           </form>
         </div>
       </div>
