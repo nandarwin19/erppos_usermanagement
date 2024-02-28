@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="w-[100%] bg-[#33333332]">
+    <div className="w-[100%]">
       <div className="flex items-center justify-between  max-container ">
         <p className="logo">PICO SBS</p>
         <div className="flex items-center gap-3">

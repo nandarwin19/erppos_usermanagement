@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { sidebarData } from "../utils/data";
+import Image from "next/image";
 
 const Sidebar = ({ open }) => {
   const [activeMenu, setActiveMenu] = useState("");
@@ -30,11 +31,14 @@ const Sidebar = ({ open }) => {
 
   return (
     <div
-      className={`min-h-[100vh] fixed top-0 left-0 px-2 bg-secondary color-white pt-20 ${
+      className={`min-h-[100vh] fixed top-0 left-0 px-2 bg-secondary color-white pt-5 ${
         open ? "w-[17rem]" : "w-20"
       } duration-400 relative hover:w-[17rem] group`}
     >
       <div className="flex flex-col gap-1 overflow-hidden">
+        <div className="w-[100px] h-[100px]">
+          <Image src="/img/pico.png" width={50} alt="logo" height={50} />
+        </div>
         {sidebarData &&
           sidebarData.map((menu, index) => (
             <div key={index} className="block">
@@ -49,7 +53,9 @@ const Sidebar = ({ open }) => {
                       : "text-[#e3e4e6] "
                   }`}
                 >
-                  <FontAwesomeIcon icon={menu.menu_icon} />
+                  <div className={`p-2 rounded-md`}>
+                    <FontAwesomeIcon icon={menu.menu_icon} />
+                  </div>
                   <h2
                     className={`${
                       activeMenu === menu.menu_name
