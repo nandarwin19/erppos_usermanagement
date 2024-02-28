@@ -95,15 +95,15 @@ export const userDatas = [
     email: "john.doe@example.com",
     isActive: true,
     role: "Admin",
-    img: "/images/user_image.jpg",
+    username: "john_doe",
   },
   {
     firstName: "Jane",
     lastName: "Smith",
     email: "jane.smith@example.com",
     isActive: false,
-    img: "/images/user_image.jpg",
     role: "User",
+    username: "jane_doe",
   },
   {
     firstName: "Michael",
@@ -111,7 +111,7 @@ export const userDatas = [
     email: "michael.johnson@example.com",
     isActive: true,
     role: "Admin",
-    img: "/images/user_image.jpg",
+    username: "lay23",
   },
   {
     firstName: "Emily",
@@ -119,7 +119,7 @@ export const userDatas = [
     email: "emily.brown@example.com",
     isActive: true,
     role: "User",
-    img: "/images/user_image.jpg",
+    username: "win_888",
   },
   {
     firstName: "Daniel",
@@ -127,7 +127,7 @@ export const userDatas = [
     email: "daniel.martinez@example.com",
     isActive: false,
     role: "Admin",
-    img: "/images/user_image.jpg",
+    username: "rr_234",
   },
   {
     firstName: "Sophia",
@@ -135,7 +135,7 @@ export const userDatas = [
     email: "sophia.anderson@example.com",
     isActive: true,
     role: "User",
-    img: "/images/user_image.jpg",
+    username: "john_doe",
   },
   {
     firstName: "William",
@@ -143,7 +143,7 @@ export const userDatas = [
     email: "william.taylor@example.com",
     isActive: false,
     role: "User",
-    img: "/images/user_image.jpg",
+    username: "john_doe",
   },
   {
     firstName: "Olivia",
@@ -151,6 +151,39 @@ export const userDatas = [
     email: "olivia.white@example.com",
     isActive: true,
     role: "Admin",
-    img: "/images/user_image.jpg",
+    username: "john_doe",
+  },
+];
+
+export const RolesListInfos = [
+  {
+    name: "Administrator",
+  },
+  {
+    name: "Cashier",
+  },
+  {
+    name: "Store Keeper",
+  },
+  {
+    name: "Manager",
+  },
+  {
+    name: "Supervisor",
+  },
+  {
+    name: "Accountant",
+  },
+  {
+    name: "Salesperson",
+  },
+  {
+    name: "Customer Service",
+  },
+  {
+    name: "Delivery Driver",
+  },
+  {
+    name: "Security Guard",
   },
 ];

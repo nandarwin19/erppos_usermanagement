@@ -6,7 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { sidebarData } from "../utils/data";
 import Image from "next/image";
 
-const Sidebar = ({ open }) => {
+const Sidebar = ({ open, hovered, setHovered }) => {
   const [activeMenu, setActiveMenu] = useState("");
   const [secondActiveMenu, setSecondActiveMenu] = useState("");
   const [itemMenu, setItemMenu] = useState("");
@@ -31,9 +31,11 @@ const Sidebar = ({ open }) => {
 
   return (
     <div
-      className={`min-h-[100vh] fixed top-0 left-0 px-2 bg-secondary color-white pt-5 ${
-        open ? "w-[17rem]" : "w-20"
-      } duration-400 relative hover:w-[17rem] group`}
+      className={`h-[100vh] sticky top-0 left-0 px-2 bg-secondary color-white pt-5 ${
+        hovered ? "w-[17rem]" : "w-20"
+      } duration-400 relative group`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <div className="flex flex-col gap-1 overflow-hidden">
         <div className="w-[100px] h-[100px]">

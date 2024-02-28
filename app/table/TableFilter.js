@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from "next/router";
 
 import {
   faDownload,
@@ -9,13 +8,14 @@ import {
 import UserListProvider from "../users/UserListProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 
 export const TableFilter = ({ searchQuery }) => {
-  //   const router = useRouter();
+  const router = useRouter();
 
-  //   const goCreate = () => {
-  //     router.push("/users/create");
-  //   };
+  const goToCreate = () => {
+    router.push("/users/create");
+  };
 
   return (
     <>
@@ -48,7 +48,10 @@ export const TableFilter = ({ searchQuery }) => {
             </button>
           </div>
           <div>
-            <button className=" text-gray-300 bg-[#2d68ac] hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md">
+            <button
+              onClick={goToCreate}
+              className=" text-gray-300 bg-[#2d68ac] hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md"
+            >
               Add User
             </button>
           </div>
