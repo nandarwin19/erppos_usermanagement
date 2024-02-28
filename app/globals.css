@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=roobert");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Aquatico";
+  src: url("/public/Aquatico-Font/Aquatico-Regular.otf") format("opentype");
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "roobert", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  list-style: none;
+}
+
+body {
+  background-color: #2c2b2b;
+  min-height: 100vh;
+  width: 100%;
+  color: white;
+}
+
+.logo {
+  font-family: "Aquatico", "roobert", Arial, sans-serif;
+}
+
+@layer utilities {
+  .max-container {
+    @apply mx-auto max-w-[95%] sm:p-5 p-3;
+  }
+
+  .max-w {
+    @apply mx-auto max-w-[1400px];
+  }
+}
