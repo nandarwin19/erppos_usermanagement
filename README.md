@@ -21,6 +21,5 @@
   - display navbar if window.scrollY > 100
   -->
 
-- The things I always keep in mind
-    - I had been calling "name" in localStorage instead of by combining "first name and last name."
-    - I was deleting the data by without checking whether it was a number or a string. - eg: user.id !== userId (userId must be number)
+- Important
+    - check whether it was a number or a string. - eg: user.id !== userId (userId must be number)
