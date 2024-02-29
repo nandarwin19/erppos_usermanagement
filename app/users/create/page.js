@@ -35,9 +35,9 @@ const CreateUser = () => {
   });
 
   const userSchema = z.object({
-    firstName: z.string().min(2),
-    lastName: z.string().min(2),
-    username: z.string().min(4),
+    firstName: z.string().min(2).max(10),
+    lastName: z.string().min(2).max(10),
+    username: z.string().min(4).max(10),
     email: z.string().email(),
     isActive: z.boolean(),
     role: z.string(),
@@ -120,6 +120,7 @@ const CreateUser = () => {
                   name="firstName"
                   value={newUserData.firstName}
                   onChange={handleUserDataChange}
+                  rule="required min 2 max 10"
                 />
               </div>
               <div className="col-span-2">
@@ -130,6 +131,7 @@ const CreateUser = () => {
                   value={newUserData.lastName}
                   onChange={handleUserDataChange}
                   placeholder="Last Name"
+                  rule="required min 2 max 10"
                 />
               </div>
             </div>
@@ -153,6 +155,7 @@ const CreateUser = () => {
                     onChange={handleUserDataChange}
                     labelText="Username"
                     placeholder="john_lay"
+                    rule="required min 4 max 10"
                   />
                 </div>
 

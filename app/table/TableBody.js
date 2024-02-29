@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Checkbox } from "@nextui-org/react";
+import { Checkbox, Spinner } from "@nextui-org/react";
 import {
   Dropdown,
   DropdownTrigger,
@@ -7,10 +7,11 @@ import {
   DropdownItem,
   Button,
 } from "@nextui-org/react";
+import Link from "next/link";
 
 const tableHeader = ["FullName", "Email", "", "Role", "Username", "Status"];
 
-const TableBody = ({ data, filterData }) => {
+const TableBody = ({ data, filterData, deleteUser, loading }) => {
   const [checked, setChecked] = useState(false);
 
   const handleCheck = (e) => {
@@ -23,7 +24,7 @@ const TableBody = ({ data, filterData }) => {
   };
 
   return (
-    <div className="text-sm flex flex-col gap-3 w-full overflow-x-scroll  px-4 ">
+    <div className="text-sm flex flex-col gap-3 w-full px-4 ">
       <table className="table w-full">
         <thead>
           <tr className="text-left text-gray-200 uppercase border-b border-dashed border-main/70">
@@ -40,9 +41,13 @@ const TableBody = ({ data, filterData }) => {
             <th className="px-3 py-4 text-left">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          {filterData == null &&
-            data.map((row, idx) => (
+        <tbody className="relative">
+          {(filterData.length > 0 ? filterData : data).map((row, idx) => {
+            const editRoute = `/users/${idx + 1}/edit`;
+
+            const deleteId = `${idx + 1}`;
+
+            return (
               <tr
                 key={idx}
                 className="capitalize border-b border-dashed border-gray-500"
@@ -87,14 +92,19 @@ const TableBody = ({ data, filterData }) => {
                       <DropdownItem key="edit" className="text-main">
                         Edit
                       </DropdownItem>
-                      <DropdownItem key="delete" className="text-main">
+                      <DropdownItem
+                        key="delete"
+                        onClick={() => deleteUser(deleteId)} // Call the deleteUser function
+                        className="text-main"
+                      >
                         Delete
                       </DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
                 </td>
               </tr>
-            ))}
+            );
+          })}
         </tbody>
       </table>
     </div>

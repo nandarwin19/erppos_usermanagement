@@ -13,6 +13,7 @@ const Input = ({
   onChange,
   id,
   error,
+  rule,
 }) => {
   return (
     <React.Fragment>
@@ -44,6 +45,7 @@ const Input = ({
           id={id}
           autoComplete="off"
         />
+        <p className="text-[10px] p-1 text-gray-500">{rule}</p>
       </div>
     </React.Fragment>
   );

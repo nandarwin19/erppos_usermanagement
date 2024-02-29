@@ -3,28 +3,17 @@ import React, { useContext, useEffect, useState } from "react";
 import UserListProvider, { UserListContext } from "../UserListProvider";
 import { TableFilter } from "@/app/table/TableFilter";
 import TableBody from "@/app/table/TableBody";
+import { Spinner } from "@nextui-org/react";
 
 const UserList = ({ hovered }) => {
-  const { userData } = useContext(UserListContext);
-  const [searchQuery, setSearchQuery] = useState("");
+  const {
+    userData,
+    filteredData,
+    handleSearchChange,
+    searchQuery,
+    deleteUser,
+  } = useContext(UserListContext);
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredUserData = userData.filter((user) =>
-    user?.name?.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  useEffect(() => {
-    console.log(filteredUserData);
-  }, [filteredUserData]);
-
-  useEffect(() => {
-    if (userData) {
-      console.log(userData);
-    }
-  }, [userData]);
   return (
     <div
       className={`${
@@ -43,7 +32,17 @@ const UserList = ({ hovered }) => {
           handleSearchChange={handleSearchChange}
         />
 
-        <TableBody data={userData} filterData={filteredUserData} />
+        {userData.length === 0 ? (
+          <div className="flex items-center justify-center w-full h-[60vh]">
+            <Spinner size="lg" />
+          </div>
+        ) : (
+          <TableBody
+            data={userData}
+            filterData={filteredData}
+            deleteUser={deleteUser}
+          />
+        )}
       </div>
     </div>
   );
