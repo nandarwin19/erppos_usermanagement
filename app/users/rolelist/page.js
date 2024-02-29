@@ -93,7 +93,7 @@ const AddRole = () => {
             handle={handleRoleSearchChange}
             searchQuery={roleSearchQuery}
           />
-          <div className=" border w-full py-8 px-4 rounded-md w-full min-h-[70vh] border-main/70">
+          <div className=" border w-full py-4 px-4 rounded-md min-h-[70vh] border-main/70">
             <div className="">
               {(filteredSearchData.length > 0
                 ? filteredSearchData
@@ -101,7 +101,7 @@ const AddRole = () => {
               ).map((data, idx) => (
                 <div
                   key={idx}
-                  className="grid grid-cols-12 border-b border-dashed border-main/70 mb-4"
+                  className="grid grid-cols-12 capitalize border-b border-dashed pb-2 my-4 border-gray-500 "
                 >
                   <p className="col-span-11">{data.name}</p>
                   <Dropdown className="col-span-1">

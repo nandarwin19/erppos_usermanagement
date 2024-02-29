@@ -31,7 +31,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
 
   return (
     <div
-      className={`h-[100vh] sticky top-0 left-0 px-2 bg-secondary color-white pt-5 ${
+      className={`h-[100vh] hidde tablet:flex sticky top-0 left-0 px-2 bg-secondary color-white pt-5 ${
         hovered ? "w-[17rem]" : "w-20"
       } duration-400 relative group`}
       onMouseEnter={() => setHovered(true)}
@@ -39,7 +39,9 @@ const Sidebar = ({ open, hovered, setHovered }) => {
     >
       <div className="flex flex-col gap-1 overflow-hidden">
         <div className="w-[100px] h-[100px]">
-          <Image src="/img/pico.png" width={50} alt="logo" height={50} />
+          <Link href={"/"}>
+            <Image src="/img/pico.png" width={50} alt="logo" height={50} />
+          </Link>
         </div>
         {sidebarData &&
           sidebarData.map((menu, index) => (
@@ -58,7 +60,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                   <div className={`p-2 rounded-md`}>
                     <FontAwesomeIcon icon={menu.menu_icon} />
                   </div>
-                  <h2
+                  <p
                     className={`${
                       activeMenu === menu.menu_name
                         ? "text-white"
@@ -68,7 +70,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                     } group-hover:opacity-100`}
                   >
                     {menu.menu_name}
-                  </h2>
+                  </p>
                 </div>
 
                 <IoIosArrowDown
@@ -107,7 +109,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                             }`}
                           >
                             <FontAwesomeIcon icon={menu_item?.menu_icon} />
-                            <h2
+                            <p
                               className={`${
                                 secondActiveMenu === menu_item.menu_name
                                   ? "text-white"
@@ -115,7 +117,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                               }`}
                             >
                               {menu_item.menu_name}
-                            </h2>
+                            </p>
                           </div>
 
                           <IoIosArrowDown
@@ -162,9 +164,9 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                                             : "bg-[#7E8299]"
                                         } `}
                                       ></span>
-                                      <h2 className={``}>
+                                      <p className={``}>
                                         {child_menu.menu_name}
-                                      </h2>
+                                      </p>
                                     </span>
                                   </Link>
                                 </div>
@@ -174,11 +176,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                       </div>
                     ) : (
                       <div
-                        className={`px-4 py-2 w-full rounded-md cursor-pointer ${
-                          secondActiveMenu === menu_item.menu_name
-                            ? "bg-[#ffffff]"
-                            : "bg-transparent"
-                        }`}
+                        className={`px-4 py-2 w-full rounded-md cursor-pointer hover:bg-main`}
                       >
                         <Link href={`${menu_item.link}`}>
                           <span
@@ -192,7 +190,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                             } `}
                           >
                             <FontAwesomeIcon icon={menu_item?.menu_icon} />
-                            <h2
+                            <p
                               className={`${
                                 secondActiveMenu === menu_item.menu_name
                                   ? "text-white"
@@ -200,7 +198,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                               } `}
                             >
                               {menu_item.menu_name}
-                            </h2>
+                            </p>
                           </span>
                         </Link>
                       </div>

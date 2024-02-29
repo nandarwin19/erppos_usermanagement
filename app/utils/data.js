@@ -74,10 +74,10 @@ export const sidebarData = [
             menu_name: "Roles List",
             link: "/users/rolelist",
           },
-          {
-            menu_name: "Add Role",
-            link: "/users/role",
-          },
+          // {
+          //   menu_name: "Add Role",
+          //   link: "/users/role",
+          // },
         ],
       },
     ],
