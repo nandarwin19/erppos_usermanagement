@@ -72,20 +72,16 @@ export const sidebarData = [
         child_menus: [
           {
             menu_name: "Roles List",
+            link: "/users/rolelist",
           },
           {
             menu_name: "Add Role",
+            link: "/users/role",
           },
         ],
       },
     ],
   },
-];
-
-export const routesData = [
-  // { path: "/", label: "Home" },
-  { path: "/users/userlist", label: "Users" },
-  { path: "/users/create", label: "Create User" },
 ];
 
 export const userDatas = [

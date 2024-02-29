@@ -8,11 +8,13 @@ import {
   Button,
 } from "@nextui-org/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const tableHeader = ["FullName", "Email", "", "Role", "Username", "Status"];
 
 const TableBody = ({ data, filterData, deleteUser, loading }) => {
   const [checked, setChecked] = useState(false);
+  const Router = useRouter();
 
   const handleCheck = (e) => {
     const { checked } = e.target;
@@ -89,12 +91,16 @@ const TableBody = ({ data, filterData, deleteUser, loading }) => {
                       </Button>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Static Actions">
-                      <DropdownItem key="edit" className="text-main">
+                      <DropdownItem
+                        onClick={() => Router.push(editRoute)}
+                        key="edit"
+                        className="text-main"
+                      >
                         Edit
                       </DropdownItem>
                       <DropdownItem
                         key="delete"
-                        onClick={() => deleteUser(deleteId)} // Call the deleteUser function
+                        onClick={() => deleteUser(deleteId)}
                         className="text-main"
                       >
                         Delete

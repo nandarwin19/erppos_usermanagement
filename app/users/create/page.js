@@ -22,7 +22,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "@nextui-org/react";
 
 const CreateUser = () => {
-  const { userData, updateUser } = useContext(UserListContext);
+  const { userData, updateUser, roleData } = useContext(UserListContext);
+
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
   const [newUserData, setNewUserData] = useState({
@@ -172,7 +173,7 @@ const CreateUser = () => {
                         </Button>
                       </DropdownTrigger>
                       <DropdownMenu aria-label="Dynamic Actions">
-                        {RolesListInfos.map((role, index) => (
+                        {roleData.map((role, index) => (
                           <DropdownItem
                             key={index}
                             className="text-main"

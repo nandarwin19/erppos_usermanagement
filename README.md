@@ -15,9 +15,9 @@
   - dark and light dropdown
   - search bar done**
   - add new user done**
-  - delete user
-  - edit user
-  - add role
+  - delete user done**
+  - edit user starting**
+  - add role starting**
   - display navbar if window.scrollY > 100
   -->
 
