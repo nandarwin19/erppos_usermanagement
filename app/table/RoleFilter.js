@@ -8,10 +8,10 @@ import {
   PopoverTrigger,
   PopoverContent,
   Button,
-  Input,
 } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import Input from "../components/Input";
 
 export const RoleFilter = ({ searchQuery, handle }) => {
   const { roleData, updateRole } = useContext(UserListContext);
@@ -51,18 +51,18 @@ export const RoleFilter = ({ searchQuery, handle }) => {
 
   return (
     <>
-      <div className="flex items-center justify-between flex-wrap gap-4 mb-4 mx-4">
+      <div className="flex items-center justify-between tablet:flex-wrap gap-4 mb-4 tablet:mx-2 tablet:mr-2">
         <div className="flex items-center">
-          <div className="w-80 relative group">
+          <div className="tablet:w-80 w-full relative group">
             <input
-              className="w-80 rounded-md bg-main h-10 px-4  hover:text-white placeholder:text-gray-300 outline-none group-hover:scale-105 duration-300 ease-in-out"
+              className="tablet:w-80 w-full rounded-md border-0 bg-main h-10 px-4  hover:text-white placeholder:text-gray-300 outline-none group-hover:scale-105 duration-300 ease-in-out"
               value={searchQuery}
               onChange={handle}
               placeholder="Search role"
             />
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
-              className="absolute right-2 top-3 text-gray-300 group-hover:scale-105 text-sm"
+              className="absolute tablet:right-2 right-[10%]  top-3 text-gray-300 group-hover:scale-105 text-sm"
             />
           </div>
         </div>
@@ -83,8 +83,11 @@ export const RoleFilter = ({ searchQuery, handle }) => {
                   placeholder="Role"
                   value={newRole.name}
                   onChange={handleRoleChange}
+                  className="bg-[#d4d4d8] placeholder:text-main text-main"
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" className="border-0">
+                  Submit
+                </Button>
               </div>
             </form>
           </PopoverContent>

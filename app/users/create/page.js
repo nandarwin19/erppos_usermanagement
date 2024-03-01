@@ -111,8 +111,8 @@ const CreateUser = () => {
             {/* <Breadcrumbs /> */}
           </div>
           <form onSubmit={handleSubmit} className="py-8">
-            <div className="grid grid-cols-5 gap-10">
-              <div className="col-span-2">
+            <div className="grid tablet:grid-cols-5 grid-cols-12 gap-10">
+              <div className="tablet:col-span-2 col-span-5">
                 <Input
                   labelText="First Name"
                   placeholder="First Name"
@@ -124,7 +124,7 @@ const CreateUser = () => {
                   rule="required min 2 max 10"
                 />
               </div>
-              <div className="col-span-2">
+              <div className="tablet:col-span-2 col-span-5">
                 <Input
                   labelText="Last Name"
                   type="text"
@@ -137,7 +137,7 @@ const CreateUser = () => {
               </div>
             </div>
             <div className="mt-5">
-              <div className="grid grid-cols-12 gap-10">
+              <div className="grid tablet:grid-cols-12 tablet:gap-2 gap-10">
                 <div className="col-span-3">
                   <Input
                     type="email"
@@ -160,7 +160,7 @@ const CreateUser = () => {
                   />
                 </div>
 
-                <div className="col-span-2 mt-3">
+                <div className="col-span-2 mt-0 tablet:mt-2 w-32">
                   <div className="flex flex-col">
                     <label className="text-xs text-gray-200 mb-1">Roles</label>
                     <Dropdown>

@@ -31,7 +31,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
 
   return (
     <div
-      className={`h-[100vh] hidde tablet:flex sticky top-0 left-0 px-2 bg-secondary color-white pt-5 ${
+      className={`h-[100vh] hidden tablet:flex sticky top-0 left-0 px-2 bg-secondary color-white pt-5 ${
         hovered ? "w-[17rem]" : "w-20"
       } duration-400 relative group`}
       onMouseEnter={() => setHovered(true)}

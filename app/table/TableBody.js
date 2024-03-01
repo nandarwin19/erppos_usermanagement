@@ -26,7 +26,7 @@ const TableBody = ({ data, filterData, deleteUser, loading }) => {
   };
 
   return (
-    <div className="text-sm flex flex-col gap-3 w-full px-4 ">
+    <div className="text-sm flex flex-col gap-3 w-full tablet:px-4 px-0">
       <table className="table w-full">
         <thead>
           <tr className="text-left text-gray-200 uppercase border-b border-dashed border-main/70">
@@ -52,7 +52,7 @@ const TableBody = ({ data, filterData, deleteUser, loading }) => {
             return (
               <tr
                 key={idx}
-                className="capitalize border-b border-dashed border-gray-500"
+                className="capitalize border  border-b border-gray-500 border-dashed pb-2 my-4"
               >
                 <td className="px-3 py-3 min-w-[10px]">
                   <Checkbox defaultSelected></Checkbox>

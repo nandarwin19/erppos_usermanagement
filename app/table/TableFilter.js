@@ -19,11 +19,11 @@ export const TableFilter = ({ searchQuery, handleSearchChange }) => {
 
   return (
     <>
-      <div className="flex items-center justify-between flex-wrap gap-4 px-8">
+      <div className="flex items-center justify-between flex-wrap gap-4 px-0 tablet:px-8 w-full">
         <div className="flex items-center">
-          <div className="w-80 relative group">
+          <div className="w-80 tablet:w-full relative group">
             <input
-              className="w-80 rounded-md bg-main h-10 px-4  hover:text-white placeholder:text-gray-300 outline-none group-hover:scale-105 duration-300 ease-in-out"
+              className="tablet:w-80 w-full rounded-md bg-main h-10 px-4 border-0 text-white hover:text-white placeholder:text-gray-300 outline-none group-hover:scale-105 duration-300 ease-in-out"
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search user"
@@ -34,15 +34,15 @@ export const TableFilter = ({ searchQuery, handleSearchChange }) => {
             />
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex  items-center gap-4">
           <div>
-            <button className="bg-main text-gray-300 h-10 hover:bg-[#2d68ac] hover:text-white hover:scale-105 duration-200 ease-inh-10 px-3 rounded-md">
+            <button className="bg-main border-0 text-gray-300 h-10 hover:bg-[#2d68ac] hover:text-white hover:scale-105 duration-200 ease-inh-10 px-3 rounded-md">
               <FontAwesomeIcon icon={faFilter} className="mr-2" />
               Filter
             </button>
           </div>
           <div>
-            <button className="bg-main text-gray-300 hover:bg-[#2d68ac] hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md">
+            <button className="bg-main border-0 text-gray-300 hover:bg-[#2d68ac] hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md">
               <FontAwesomeIcon icon={faDownload} className="mr-2" />
               Export
             </button>
@@ -50,7 +50,7 @@ export const TableFilter = ({ searchQuery, handleSearchChange }) => {
           <div>
             <button
               onClick={goToCreate}
-              className=" text-gray-300 bg-[#2d68ac] hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md"
+              className=" text-gray-300 bg-[#2d68ac] border-0 hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md"
             >
               Add User
             </button>

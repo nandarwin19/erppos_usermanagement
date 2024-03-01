@@ -101,10 +101,10 @@ const AddRole = () => {
               ).map((data, idx) => (
                 <div
                   key={idx}
-                  className="grid grid-cols-12 capitalize border-b border-dashed pb-2 my-4 border-gray-500 "
+                  className="grid grid-cols-12 capitalize border-0 border-b border-gray-500 border-dashed pb-2 my-4 "
                 >
-                  <p className="col-span-11">{data.name}</p>
-                  <Dropdown className="col-span-1">
+                  <p className="col-span-10 tablet:col-span-11">{data.name}</p>
+                  <Dropdown className="col-span-1 tablet:col-span-2">
                     <DropdownTrigger>
                       <Button variant="bordered" className="text-white">
                         Actions

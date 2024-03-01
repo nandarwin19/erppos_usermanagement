@@ -17,8 +17,8 @@ const UserList = ({ hovered }) => {
   return (
     <div
       className={`${
-        hovered ? "w-[40%]" : "w-[95%]"
-      }  min-h-[85vh] rounded-lg shadow-2xl p-8 bg-secondary`}
+        hovered ? "tablet:w-[40%]" : "tablet:w-[95%]"
+      }  min-h-[85vh] w-full overflow-x-scroll rounded-lg shadow-2xl p-8 bg-secondary`}
     >
       <p
         className="text-sm
@@ -26,7 +26,7 @@ const UserList = ({ hovered }) => {
       >
         User / UserList
       </p>
-      <div className="border py-8 px-2 rounded-md w-full min-h-[80vh] border-main/70">
+      <div className="border py-8 tablet:px-2 rounded-md w-full min-h-[80vh] border-main/70">
         <TableFilter
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
