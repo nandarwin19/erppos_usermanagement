@@ -15,7 +15,7 @@ import Input from "../components/Input";
 
 export const RoleFilter = ({ searchQuery, handle }) => {
   const { roleData, updateRole } = useContext(UserListContext);
-  const router = useRouter();
+ 
   const [newRole, setNewRole] = useState({
     name: "",
   });
@@ -39,9 +39,6 @@ export const RoleFilter = ({ searchQuery, handle }) => {
     }
   };
 
-  const goToCreate = () => {
-    router.push("/users/role");
-  };
 
   const handleRoleChange = (e) => {
     setNewRole({
