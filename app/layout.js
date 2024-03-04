@@ -7,7 +7,6 @@ import Providers from "./providers";
 import { NextUIProvider } from "@nextui-org/react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import DarkLight from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
