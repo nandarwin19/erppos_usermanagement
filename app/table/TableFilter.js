@@ -50,7 +50,7 @@ export const TableFilter = ({ searchQuery, handleSearchChange }) => {
           <div>
             <button
               onClick={goToCreate}
-              className=" text-gray-300 bg-[#2d68ac] border-0 hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md"
+              className="cursor-pointer text-gray-300 bg-[#2d68ac] border-0 hover:text-white hover:scale-105 duration-200 ease-in h-10 px-3 rounded-md"
             >
               Add User
             </button>

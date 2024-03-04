@@ -55,7 +55,7 @@ export const RoleFilter = ({ searchQuery, handle }) => {
         <div className="flex items-center">
           <div className="tablet:w-80 w-full relative group">
             <input
-              className="tablet:w-80 w-full rounded-md border-0 bg-main h-10 px-4  hover:text-white placeholder:text-gray-300 outline-none group-hover:scale-105 duration-300 ease-in-out"
+              className="tablet:w-80 text-white placeholder:text-white w-full rounded-md border-0 bg-main h-10 px-4  hover:text-white  outline-none group-hover:scale-105 duration-300 ease-in-out"
               value={searchQuery}
               onChange={handle}
               placeholder="Search role"
@@ -83,7 +83,7 @@ export const RoleFilter = ({ searchQuery, handle }) => {
                   placeholder="Role"
                   value={newRole.name}
                   onChange={handleRoleChange}
-                  className="bg-[#d4d4d8] placeholder:text-main text-main"
+                  className="bg-[#D4D4D8] placeholder:text-main text-main"
                 />
                 <Button type="submit" className="border-0">
                   Submit

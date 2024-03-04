@@ -16,14 +16,13 @@ import { RolesListInfos } from "@/app/utils/data";
 import { z } from "zod";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "@nextui-org/react";
-import UserListProvider, { UserListContext } from "../../UserListProvider";
+import UserListProvider, { UserListContext } from "../../../UserListProvider";
 import { useRouter } from "next/navigation";
 
-const EditUser = () => {
-  //   const { userData, setUserData } = useContext(UserListContext);
+const EditUser = ({ userId }) => {
   const { userData, setUserData, updateUser } = useContext(UserListContext);
-  const Router = useRouter();
-  const { userId } = Router;
+  const router = useRouter();
+
   const [isPending, setIsPending] = useState(false);
   const [editUserData, setEditUserData] = useState({
     firstName: "",
@@ -47,7 +46,6 @@ const EditUser = () => {
     if (userData && userId) {
       const userIdNum = parseInt(userId, 10);
       const foundUser = userData[userIdNum - 1];
-      setUserData(foundUser);
       setEditUserData({
         firstName: foundUser?.firstName,
         lastName: foundUser?.lastName,
@@ -60,11 +58,49 @@ const EditUser = () => {
   }, [userData, userId, setUserData]);
 
   const goBack = () => {
-    Router.push("/users/userlist");
+    router.push("/users/userlist");
   };
 
-  const handleSubmit = () => {};
-  const handleUserDataChange = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    try {
+      userSchema.parse(editUserData);
+      const userIdNum = parseInt(userId, 10);
+      const updatedUsers = userData.map((user, idx) =>
+        idx + 1 === userIdNum ? { ...user, ...editUserData } : user
+      );
+
+      setUserData(updatedUsers);
+      updateUser(updatedUsers);
+      setIsPending(false);
+      toast.success("Update successfully!");
+      setEditUserData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        isActive: false,
+        role: "",
+        username: "",
+      });
+    } catch (error) {
+      setIsPending(false);
+      toast.error("Form submission failed");
+      console.log(userData);
+      console.log(editUserData);
+      console.error("Form submission error:", error.issues);
+    }
+  };
+
+  const handleUserDataChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setEditUserData((prevUserData) => ({
+      ...prevUserData,
+      [name]: newValue,
+    }));
+  };
 
   return (
     <div>
@@ -82,7 +118,9 @@ const EditUser = () => {
         </div>
         <div className="bg-secondary rounded-xl px-8">
           <div className="pt-6">
-            <h1 className="font-semibold text-xl text-gray-300">Edit user</h1>
+            <h1 className="font-semibold text-xl text-gray-300">
+              Edit user {userId}
+            </h1>
 
             {/* <Breadcrumbs /> */}
           </div>
@@ -197,10 +235,10 @@ const EditUser = () => {
   );
 };
 
-const UsersListWithContext = () => {
+const UsersListWithContext = ({ params }) => {
   return (
     <UserListProvider>
-      <EditUser />
+      <EditUser key={params.userId} userId={params.userId} />
     </UserListProvider>
   );
 };

@@ -45,7 +45,7 @@ const TableBody = ({ data, filterData, deleteUser, loading }) => {
         </thead>
         <tbody className="relative">
           {(filterData.length > 0 ? filterData : data).map((row, idx) => {
-            const editRoute = `/users/${idx + 1}/edit`;
+            const editRoute = `/users/userlist/edit/${idx + 1}`;
 
             const deleteId = `${idx + 1}`;
 

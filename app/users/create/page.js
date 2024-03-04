@@ -207,7 +207,7 @@ const CreateUser = () => {
               </div>
             </div>
             <Button
-              className="bg-main w-20 text-gray-200"
+              className="bg-main cursor-pointer w-20 text-gray-200"
               onClick={() => setIsPending(true)}
               type="submit"
             >
