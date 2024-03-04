@@ -79,7 +79,7 @@ export const RoleFilter = ({ searchQuery, handle }) => {
                   placeholder="Role"
                   value={newRole.name}
                   onChange={handleRoleChange}
-                  className="bg-[#d4d4d8] placeholder:text-main text-main"
+                  className="bg-[#d4d4d4] placeholder:text-main text-main"
                 />
                 <Button type="submit" className="border-0">
                   Submit
