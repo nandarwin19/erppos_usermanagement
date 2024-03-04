@@ -18,7 +18,7 @@ const UserList = ({ hovered }) => {
     <div
       className={`${
         hovered ? "tablet:w-[40%]" : "tablet:w-[95%]"
-      }  min-h-[85vh] w-full overflow-x-scroll rounded-lg shadow-2xl p-8 bg-secondary`}
+      }  min-h-[85vh] w-full overflow-x-scroll laptop:overflow-scroll-hidden rounded-lg shadow-2xl p-8 bg-secondary`}
     >
       <p
         className="text-sm

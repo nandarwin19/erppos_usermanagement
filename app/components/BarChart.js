@@ -57,7 +57,7 @@ function BarChart() {
       <h1 className="w-[150px] mx-auto mt-10 text-xl font-semibold capitalize ">
         Bar Chart
       </h1>
-      <div className="w-[90%] h-full flex  mt-10 my-auto">
+      <div className="w-[40%] laptop:w-[99%] h-full flex  mt-10 my-auto">
         <div className="border border-gray-400 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl">
           <canvas id="myChart"></canvas>
         </div>
