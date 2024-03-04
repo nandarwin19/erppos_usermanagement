@@ -15,7 +15,7 @@ import Input from "../components/Input";
 
 export const RoleFilter = ({ searchQuery, handle }) => {
   const { roleData, updateRole } = useContext(UserListContext);
- 
+
   const [newRole, setNewRole] = useState({
     name: "",
   });
@@ -38,7 +38,6 @@ export const RoleFilter = ({ searchQuery, handle }) => {
       toast.error(error.message);
     }
   };
-
 
   const handleRoleChange = (e) => {
     setNewRole({
@@ -80,7 +79,7 @@ export const RoleFilter = ({ searchQuery, handle }) => {
                   placeholder="Role"
                   value={newRole.name}
                   onChange={handleRoleChange}
-                  className="bg-[#D4D4D8] placeholder:text-main text-main"
+                  className="bg-[#d4d4d8] placeholder:text-main text-main"
                 />
                 <Button type="submit" className="border-0">
                   Submit
