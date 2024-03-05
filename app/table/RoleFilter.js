@@ -35,7 +35,7 @@ export const RoleFilter = ({ searchQuery, handle }) => {
       });
     } catch (error) {
       toast.error("Form submisson failed!");
-      toast.error(error.message);
+      // toast.error(error.message);
     }
   };
 
