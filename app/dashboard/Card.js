@@ -18,7 +18,7 @@ Card.propTypes = {
   data: PropTypes.shape({
     total: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     content: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   }).isRequired,
 };
 

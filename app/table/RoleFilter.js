@@ -73,15 +73,16 @@ export const RoleFilter = ({ searchQuery, handle }) => {
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col gap-4 p-4 w-80">
                 <h3 className="text-main">Create a Role</h3>
-                <Input
-                  label="Role"
-                  labelPlacement="outside"
-                  placeholder="Role"
-                  value={newRole.name}
-                  onChange={handleRoleChange}
-                  className=" placeholder:text-white text-white"
-                />
-                <Button type="submit" className="border-0">
+
+                <div className="relative overflow-hidden">
+                  <input
+                    value={newRole.name}
+                    onChange={handleRoleChange}
+                    placeholder="Role"
+                    className="block w-full bg-[#d4d4d4] text-main text-sm focus:outline-none border-none rounded-lg overflow-auto h-10 px-4"
+                  />
+                </div>
+                <Button type="submit" className="cursor-pointer border-0">
                   Submit
                 </Button>
               </div>
