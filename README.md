@@ -4,9 +4,10 @@
 
 - route
   - /
-  - /users/userlist **starting**
+  - /users/userlist
   - /users/create
-  - /roles
+  - users/userlist/edit/[userId]
+  - /users/rolelist
 
 <!-- - components
   - sidebar done**
