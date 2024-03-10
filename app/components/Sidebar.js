@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Link from "next/Link";
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { sidebarData } from "../utils/data";
 import Image from "next/image";
+import Link from "next/link";
 
 const Sidebar = ({ open, hovered, setHovered }) => {
   const [activeMenu, setActiveMenu] = useState("");
