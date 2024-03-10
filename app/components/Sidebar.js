@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Link from "next/link";
+import Link from "next/Link";
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { sidebarData } from "../utils/data";
@@ -178,7 +178,7 @@ const Sidebar = ({ open, hovered, setHovered }) => {
                       <div
                         className={`px-4 py-2 w-full rounded-md cursor-pointer hover:bg-main`}
                       >
-                        <Link href={`${menu_item.link}`}>
+                        <Link href={`${menu_item.Link}`}>
                           <span
                             onClick={() =>
                               secondActiveHandler(menu_item.menu_name)
