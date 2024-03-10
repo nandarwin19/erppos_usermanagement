@@ -77,6 +77,7 @@ const CreateUser = () => {
         role: "",
         username: "",
       });
+      router.push("/users/userlist");
     } catch (error) {
       setIsPending(false);
       toast.error("Form submission failed");
